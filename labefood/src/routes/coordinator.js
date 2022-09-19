@@ -14,7 +14,7 @@ export const goToSearchPage = (navigator) => {
     navigator('/search');
 }
 
-export const goToMyProfilePage = (navigator) => {
+export const goToMyProfilePage = (navigator, id) => {
     navigator(`/myprofile/${id}`);
 }
 
