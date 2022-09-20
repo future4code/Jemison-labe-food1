@@ -5,7 +5,9 @@ import { EmailInput } from '../../components/inputs/email.js';
 import { PasswordInput } from '../../components/inputs/password.js';
 import { useNavigate } from "react-router-dom";
 import { goToSignUpPage, goToFeedPage } from "../../routes";
+import * as Stl from '../../components/styled-containers';
 import logoSmall from '../../assets/logo-small.png';
+import { Button } from '@chakra-ui/react'
 
 
 export const LoginPage = ({ setIsLoggedIn }) => {
@@ -37,24 +39,23 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         }
     }
     return (
-        <div>
-            <div>
-                <form onSubmit={onSubmit}>
-                    <img src={logoSmall} alt="Logo Rappi4" />
-                    <EmailInput
-                        value={form.email}
-                        onChange={onChange}
-                        isValid={isEmailValid}
-                    />
-                    <PasswordInput
-                        value={form.password}
-                        onChange={onChange}
-                        isValid={isPasswordValid}
-                    />
-                    <button type="submit" >Entrar</button>
-                    <button onClick={() => goToSignUpPage(navigate)} type="button" variant="form-secondary">Não possui conta? Cadastrar</button>
-                </form>
-            </div>
-        </div>
+        <Stl.MainContainer>
+            <form onSubmit={onSubmit}>
+                <img src={logoSmall} alt="Logo Rappi4" />
+                <h1>Entrar</h1>
+                <EmailInput
+                    value={form.email}
+                    onChange={onChange}
+                    isValid={isEmailValid}
+                />
+                <PasswordInput
+                    value={form.password}
+                    onChange={onChange}
+                    isValid={isPasswordValid}
+                />
+                <Stl.EnterBtn type="submit" >Entrar</Stl.EnterBtn>
+                <Stl.SignupBtn onClick={() => goToSignUpPage(navigate)} type="button">Não possui conta? Clique aqui</Stl.SignupBtn>
+            </form>
+        </Stl.MainContainer>
     )
 }

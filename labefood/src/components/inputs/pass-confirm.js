@@ -1,6 +1,7 @@
 import {
     FormControl,
-   
+    FormLabel,
+    Input,
     FormErrorMessage,
     InputRightElement,
     InputGroup,
@@ -10,22 +11,23 @@ import { useState } from 'react';
 import ShowPassword from '../../assets/show.png';
 import HidePassword from '../..//assets/hide.png';
 
-export const PasswordInput = ({ isValid, value, onChange }) => {
+export const PassConfirmInput = ({ isValid, value, onChange }) => {
+
     const [showPassword, setShowPassword] = useState(false);
     const onClickShowPassword = () => {
         setShowPassword(!showPassword);
     }
     return (
         <FormControl isInvalid={!isValid}>
-            <pre>Senha*    </pre>
+            <pre>Confirmar* </pre>
             <InputGroup size='md'>
                 <input
-                    name="password"
+                    name="confirmar"
                     value={value}
                     onChange={onChange}
                     pr='4.5rem'
                     type={showPassword ? 'text' : 'password'}
-                    placeholder='Mínimo 6 caracteres'
+                    placeholder='Digite a senha novamente'
                 />
                 <InputRightElement width='4.5rem'>
                     <IconButton variant='untyled'
@@ -39,7 +41,7 @@ export const PasswordInput = ({ isValid, value, onChange }) => {
             </InputGroup>
             {!isValid ? (
                 <FormErrorMessage as="p">
-                    A senha deve conter ao menos 6 caracteres
+                   Deve ser a mesma que a anterior
                 </FormErrorMessage>
             ) : undefined}
         </FormControl>
