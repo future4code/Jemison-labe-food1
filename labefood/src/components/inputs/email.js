@@ -1,19 +1,18 @@
 import {
     FormControl,
-    FormLabel,
-    Input,
+ 
     FormErrorMessage,
 } from '@chakra-ui/react';
 
 export const EmailInput = ({ isValid, value, onChange }) => {
     return (
         <FormControl isInvalid={!isValid}>
-            <FormLabel>E-mail</FormLabel>
-            <Input
+            <pre>E-mail*   </pre>
+            <input
                 name="email"
                 value={value}
                 onChange={onChange}
-                placeholder="email"
+                placeholder="email@email.com"
             />
             {!isValid ? (
                 <FormErrorMessage as="p">
