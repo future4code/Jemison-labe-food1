@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { goToSignUpPage, goToFeedPage } from "../../routes";
 import * as Stl from '../../components/styled-containers';
 import logoSmall from '../../assets/logo-small.png';
-import { Button } from '@chakra-ui/react'
+
 
 
 export const LoginPage = ({ setIsLoggedIn }) => {
