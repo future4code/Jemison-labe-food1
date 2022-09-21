@@ -26,12 +26,18 @@ export const SignUpPage = () => {
     const [isPasswordConfirmed, setIsPasswordConfirmed] = useState(true);
 
     const onSubmit = async (e) => {
+        setIsNameValid(false);
+        setIsEmailValid(false);
+        setIsCpfValid(false);
+        setIsPasswordValid(false);
+        setIsPasswordConfirmed(false)
         e.preventDefault();
         setIsNameValid(validateName(form.name));
         setIsEmailValid(validateEmail(form.email));
         setIsCpfValid(validateCpf(form.cpf))
         setIsPasswordValid(validatePassword(form.password));
         setIsPasswordConfirmed(CheckPassword(form.password, form.confirmPass))
+
         try {
             const { token } = isNameValid && isEmailValid && isCpfValid && isPasswordValid && isPasswordConfirmed && await SignUp({
                 name: form.name,

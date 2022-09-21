@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 
 
-export function useGetData(url){
+export function useGetData(url, header){
 
     const [data, setData] = useState(undefined)
     const [isLoading, setIsLoading] = useState(false)
@@ -11,7 +11,7 @@ export function useGetData(url){
 
     useEffect(() => {
         setIsLoading(true)
-        axios.get(url)
+        axios.get(url,header)
             .then((res) => {
                 setIsLoading(false)
                 setData(res.data)
