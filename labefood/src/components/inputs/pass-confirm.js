@@ -1,7 +1,5 @@
 import {
     FormControl,
-    FormLabel,
-    Input,
     FormErrorMessage,
     InputRightElement,
     InputGroup,
@@ -22,7 +20,7 @@ export const PassConfirmInput = ({ isValid, value, onChange }) => {
             <pre>Confirmar* </pre>
             <InputGroup size='md'>
                 <input
-                    name="confirmar"
+                    name="confirmPass"
                     value={value}
                     onChange={onChange}
                     pr='4.5rem'
