@@ -1,9 +1,11 @@
 import { React, useState } from "react"
-import { useForm } from "../../hooks"
-import { SignUp, validateName, validateEmail, validateCpf, validatePassword, CheckPassword } from "../../constants"
-import { NameInput, EmailInput, CpfInput, PasswordInput, PassConfirmInput } from '../../components/inputs'
+import { useForm } from "../../hooks";
+import axios from "axios";
+import { BASE_URL } from "../../constants";
+import { validateName, validateEmail, validateCpf, validatePassword} from "../../constants";
+import { NameInput, EmailInput, CpfInput, PasswordInput, PassConfirmInput } from '../../components/inputs';
 import { useNavigate } from "react-router-dom";
-import {goToFeedPage } from "../../routes";
+import {goToAddAddressPage } from "../../routes";
 import logoSmall from '../../assets/logo-small.png';
 import * as Stl from '../../components/'
 
@@ -16,43 +18,43 @@ export const SignUpPage = () => {
         email: '',
         cpf: '',
         password: '',
-        passConfirm: '',
+        confirmPass: '',
     });
-
+ 
     const [isNameValid, setIsNameValid] = useState(true)
     const [isEmailValid, setIsEmailValid] = useState(true);
     const [isCpfValid, setIsCpfValid] = useState(true);
     const [isPasswordValid, setIsPasswordValid] = useState(true);
     const [isPasswordConfirmed, setIsPasswordConfirmed] = useState(true);
 
-    const onSubmit = async (e) => {
-        setIsNameValid(false);
-        setIsEmailValid(false);
-        setIsCpfValid(false);
-        setIsPasswordValid(false);
-        setIsPasswordConfirmed(false)
+    const onSubmit = (e) => {
         e.preventDefault();
         setIsNameValid(validateName(form.name));
         setIsEmailValid(validateEmail(form.email));
         setIsCpfValid(validateCpf(form.cpf))
         setIsPasswordValid(validatePassword(form.password));
-        setIsPasswordConfirmed(CheckPassword(form.password, form.confirmPass))
+        setIsPasswordConfirmed(form.password === form.confirmPass)
+        console.log(form.password)
+        console.log(form.confirmPass)
+        console.log({isPasswordConfirmed})
 
-        try {
-            const { token } = isNameValid && isEmailValid && isCpfValid && isPasswordValid && isPasswordConfirmed && await SignUp({
+       if(isNameValid && isEmailValid && isCpfValid && isPasswordValid && isPasswordConfirmed){
+        axios.post(`${BASE_URL}/signup`, { 
                 name: form.name,
                 email: form.email,
                 cpf: form.cpf,
                 password: form.password,
-                });
-            localStorage.setItem('token', token);
-            goToFeedPage(navigate);
-        } catch (e) {
-            console.log(e)
-            alert(e.response.data.message)
-        }
+                })
+                .then((res) => {
+                    localStorage.setItem('token', res.data.token)
+                    goToAddAddressPage(navigate);
+                })
+                .catch((err) => {
+                   alert(err.message)
+                })
+        } else { alert("Um dos campos não foi preenchido corretamente") }
     }
-
+          
     return (
         <Stl.MainContainer>
             <form onSubmit={onSubmit}>

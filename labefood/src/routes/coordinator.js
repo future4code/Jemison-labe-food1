@@ -15,13 +15,17 @@ export const goToSearchPage = (navigator) => {
 }
 
 export const goToMyProfilePage = (navigator, id) => {
-    navigator(`/myprofile/${id}`);
+    navigator(`/myprofile`);
 }
 
 export const goToCartPage = (navigator) => {
     navigator('/cart');
 }
 
-export const goToAddAdressPage = (navigator) => {
-    navigator('/add-adress');
+export const goToAddAddressPage = (navigator) => {
+    navigator('/add-address');
+}
+
+export const goToUpdatePerfil = (navigator) => {
+    navigator('/update-perfil')
 }

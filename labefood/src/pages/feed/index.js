@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-import { GetRestaurants } from "../../constants";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useGetData } from "../../hooks";
 import {BASE_URL} from '../../constants'; 
@@ -13,6 +11,7 @@ export const FeedPage = () => {
         auth: localStorage.getItem('token')
         }
     })
+ 
     const lista = data && data.restaurants.map((restaurant)=>{
 
         return(

@@ -1,6 +1,8 @@
 import { React, useState } from "react"
 import { useForm } from "../../hooks"
-import { Login, validateEmail, validatePassword } from "../../constants"
+import axios from "axios";
+import { BASE_URL } from "../../constants";
+import { validateEmail, validatePassword } from "../../constants"
 import { EmailInput } from '../../components/inputs/email.js';
 import { PasswordInput } from '../../components/inputs/password.js';
 import { useNavigate } from "react-router-dom";
@@ -26,18 +28,22 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         e.preventDefault();
         setIsEmailValid(validateEmail(form.email));
         setIsPasswordValid(validatePassword(form.password));
-        try {
-            const { token } = isEmailValid && isPasswordValid && await Login({
+
+        if (isEmailValid && isPasswordValid == true) {
+            axios.post(`${BASE_URL}/login`, {
                 email: form.email,
                 password: form.password
-            });
-            localStorage.setItem('token', token);
-            goToFeedPage(navigate);
-            setIsLoggedIn(true);
-        } catch (e) {
-            alert(e.response.data.message)
-        }
+            })
+                .then((res) => {
+                    localStorage.setItem('token', res.data.token)
+                    goToFeedPage(navigate);
+                })
+                .catch((err) => {
+                    alert("Houve um erro, tente novamente")
+                })
+        } else { alert("Um dos campos não foi preenchido corretamente") }
     }
+
     return (
         <Stl.MainContainer>
             <form onSubmit={onSubmit}>
