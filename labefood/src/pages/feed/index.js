@@ -1,3 +1,4 @@
+
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useGetData } from "../../hooks";
 import {BASE_URL} from '../../constants'; 
@@ -32,9 +33,15 @@ export const FeedPage = () => {
             </div>
         )
     })
+
+import { RestaurantCard } from "../../components/restaurant-card";
+
+export const FeedPage = () => {
+    
+
      return (
         <div>
-           {lista}
+           <RestaurantCard/>
         </div>
     )
 
