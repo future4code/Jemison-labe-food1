@@ -63,3 +63,11 @@ min-height:6vh;
 max-height: 6vh;
 margin-top:20px;
 `;
+
+export const SalvarBtn = styled.button`
+background-color: #e86e5a;
+width: 88vw;
+height:6vh;
+font-weight: bold;
+margin-top:20px;
+`;

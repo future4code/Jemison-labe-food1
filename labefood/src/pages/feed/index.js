@@ -13,7 +13,7 @@ export const FeedPage = () => {
         auth: localStorage.getItem('token')
         }
     })
-    const lista = data && data.restaurants.map((restaurant)=>{
+    const lista = data && data.restaurants?.map((restaurant)=>{
 
         return(
             <div key={restaurant.id}>

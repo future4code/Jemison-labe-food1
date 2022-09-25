@@ -22,6 +22,10 @@ export const CheckPassword = ((password, confirmPass) => {
     return password === confirmPass
 })
 
+export const AddAdress = async (body) => {
+    const {data} = await axios.post(`${BASE_URL}/address`, body)
+    return data;
+}
 
 
 
