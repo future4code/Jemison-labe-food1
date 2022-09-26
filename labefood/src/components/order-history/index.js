@@ -1,8 +1,8 @@
 import useProtectedPage from "../../hooks/useProtectedPage";
 import { useGetDataOrder } from "../../hooks";
 import { BASE_URL } from '../../constants';
-import axios from "axios";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
+import * as Stl from './style.js';
 
 export const OrderHistory = () => {
 
@@ -14,12 +14,16 @@ export const OrderHistory = () => {
         }
     })
     const lista = data && data.orders.map((order, index) => {
+     const valueTotal =''
+        const valueString = JSON.stringify((order.totalPrice))
+        const valueSplit = valueString.split('.', 2)
 
-        return (
-            <div key={index}>
-                <p>{order.totalPrice}</p>
-                <p>{order.restaurantName}</p>
-            </div>
+              return (
+            <Stl.Order key={index}>
+                <h1>{order.restaurantName}</h1>
+                <Stl.Data>25 setembro 2022</Stl.Data>
+                <p>SUBTOTAL R${valueSplit[0]+',00'}</p>
+            </Stl.Order>
         )
     })
     return (
