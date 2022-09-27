@@ -21,6 +21,9 @@ export const RestaurantCard = () => {
         }
     })
 const lista = data && data.restaurants.map((restaurant) => {
+
+    
+    const price = restaurant.shipping.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     return(
         <RestaurantCardContainer key={restaurant.id}>
             
@@ -30,7 +33,7 @@ const lista = data && data.restaurants.map((restaurant) => {
                     <TimeShipping>
                         <DeliveryTime>{restaurant.deliveryTime} min</DeliveryTime>
                         <br/>
-                        <Shipping>Frete R${restaurant.shipping}</Shipping>
+                        <Shipping>Frete {price}</Shipping>
                         <br/>
                     </TimeShipping>
                 </Rectangle>
