@@ -1,5 +1,5 @@
 export const goToLoginPage = (navigator) => {
-    navigator('/login');
+    navigator('/');
 }
 
 export const goToSignUpPage = (navigator) => {
@@ -10,11 +10,11 @@ export const goToFeedPage = (navigator) => {
     navigator('/feed');
 }
 
-export const goToSearchPage = (navigator) => {
-    navigator('/search');
+export const goToDetailsPage = (navigator, id) => {
+    navigator('/details/:id');
 }
 
-export const goToMyProfilePage = (navigator, id) => {
+export const goToMyProfilePage = (navigator) => {
     navigator(`/myprofile`);
 }
 

@@ -6,7 +6,7 @@ import {
     CartPage,
     FeedPage,
     MyProfilePage,
-    SearchPage,
+    RestaurantDetailPage,
     SignUpPage,
     UpdatePerfilPage
 } from '../pages'
@@ -18,10 +18,10 @@ export const Router = () => {
         <BrowserRouter>
             <Header />
             <Routes>
-                <Route path='/login' element={<LoginPage />} />
+                <Route path='/' element={<LoginPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
                 <Route path='/feed' element={<FeedPage />} />
-                <Route path='/search' element={<SearchPage />} />
+                <Route path='/details/:id' element={<RestaurantDetailPage/>} />
                 <Route path='/myprofile' element={<MyProfilePage />} />
                 <Route path='/cart' element={<CartPage />} />
                 <Route path='/add-address' element={<AddAddressPage />} />

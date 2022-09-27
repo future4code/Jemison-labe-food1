@@ -2,10 +2,9 @@ import { RestaurantCard } from "../../components/restaurant-card";
 
 export const FeedPage = () => {
 
-    return (
+return (
         <div>
             <RestaurantCard />
         </div>
     )
-
 }
