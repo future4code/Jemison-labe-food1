@@ -13,16 +13,16 @@ export const OrderHistory = () => {
             auth: localStorage.getItem('token')
         }
     })
-    const lista = data && data.orders.map((order, index) => {
-     const valueTotal =''
-        const valueString = JSON.stringify((order.totalPrice))
-        const valueSplit = valueString.split('.', 2)
 
-              return (
+    const lista = data && data.orders.map((order, index) => {
+    
+        const price = order.totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        return (
             <Stl.Order key={index}>
                 <h1>{order.restaurantName}</h1>
                 <Stl.Data>25 setembro 2022</Stl.Data>
-                <p>SUBTOTAL R${valueSplit[0]+',00'}</p>
+                <p>SUBTOTAL {price}</p>
             </Stl.Order>
         )
     })
