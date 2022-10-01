@@ -3,6 +3,7 @@ import { BASE_URL } from "../../constants";
 import { goToMyProfilePage } from "../../routes";
 import { useForm } from '../../hooks';
 import {
+    Button,
     FormControl,
     FormErrorMessage,
 } from '@chakra-ui/react';
@@ -10,6 +11,9 @@ import { validateStreet, validateNumber, validateNeighbourhood, validateCity, va
 import * as Stl from '../../components';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Header from "../../components/header";
+import { ImgBack } from "../../components/header/styled";
+import back from '../../assets/back.png'
 
 export const AddAddressPage = () => {
 
@@ -66,6 +70,22 @@ export const AddAddressPage = () => {
     }
 
     return (
+        <>
+        <Header
+            back ={
+                <button><ImgBack src={back}/></button>
+            }
+
+            name={
+                <h1>Cadastro de Endereço</h1>
+            }
+        
+            logout ={
+                <Button colorScheme='red' >Logout</Button>
+            }
+        />
+
+
         <Stl.MainContainer>
             <form onSubmit={onSubmit}>
                 <h1>Meu endereço</h1>
@@ -157,6 +177,7 @@ export const AddAddressPage = () => {
                 <Stl.EnterBtn type="submit">Criar</Stl.EnterBtn>
             </form>
         </Stl.MainContainer>
+    </>
     )
 
 }

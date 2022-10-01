@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header } from '../components';
 import {
     LoginPage,
     AddAddressPage,
@@ -16,7 +15,7 @@ import {
 export const Router = () => {
     return (
         <BrowserRouter>
-            <Header />
+            
             <Routes>
                 <Route path='/' element={<LoginPage />} />
                 <Route path='/signup' element={<SignUpPage />} />
