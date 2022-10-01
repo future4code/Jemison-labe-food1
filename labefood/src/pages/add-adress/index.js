@@ -1,6 +1,5 @@
 import { SliderThumb } from "@chakra-ui/react"
 import * as Slt from '../../components/'
-import back from '../../assets/back.png'
 import {
     LogroudoInput,
     NumeroInput,
@@ -12,8 +11,25 @@ import {
 import { SalvarBtn } from "../../components/"
 import { useState } from "react"
 import { useForm } from "../../hooks"
+import Header from "../../components/header";
+import { Button } from "@chakra-ui/react";
+import back from '../../assets/back.png'
+import { ImgBack } from "../../components/header/styled";
+import { useNavigate } from "react-router-dom";
+
 
 export const AddAdressPage = () =>{
+
+    const navigate = useNavigate();
+
+    const goToLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
+    const Back = () => {
+        navigate(-1)
+    }
 
     const [form, onChange, Clear] = useForm({
         street: '',
@@ -59,7 +75,19 @@ export const AddAdressPage = () =>{
     // }
 
     return(
-        
+        <>
+        <Header 
+                back={ <button onClick={Back}><ImgBack src={back}/></button>
+                }
+            
+                 name ={
+                    <h1>Cadastrar Endereço</h1>
+                }   
+
+                logout={
+                    <Button colorScheme='red' onClick={goToLogout} >Logout</Button>
+                }/>
+
         <Slt.MainContainer>
             <form >
                 <img src={back} alt="icon back" />
@@ -98,6 +126,7 @@ export const AddAdressPage = () =>{
                 <Slt.SalvarBtn type="submit">Salvar</Slt.SalvarBtn>
             </form>
         </Slt.MainContainer>   
+    </>
     )
     
     }

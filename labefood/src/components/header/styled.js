@@ -21,10 +21,9 @@ export const Bar = styled.div `
     backdrop-filter: blur(10px);
     box-shadow: 0 0.5px 0 0 rgba(0, 0, 0, 0.25);
     background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 5px;
+    display: flex;
+    justify-content: flex-start;
     
 
 `
@@ -40,7 +39,15 @@ export const Title = styled.div `
 export const ImgBack = styled.img `
         display: flex;
         flex-direction: row;
-        width: 23px;
+        width: 10vw;
+        height: 24px;
+        margin: 14px 54px 10px 16px;
+        object-fit: contain;
+
+`
+
+export const Ghost = styled.div `
+        width: 24px;
         height: 24px;
         margin: 10px 54px 10px 16px;
         object-fit: contain;

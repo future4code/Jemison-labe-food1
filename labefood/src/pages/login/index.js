@@ -7,12 +7,25 @@ import { useNavigate } from "react-router-dom";
 import { goToSignUpPage, goToFeedPage } from "../../routes";
 import * as Stl from '../../components/styled-containers';
 import logoSmall from '../../assets/logo-small.png';
+import Header from "../../components/header";
+import { Button } from "@chakra-ui/react";
+import back from '../../assets/back.png'
+import { ImgBack } from "../../components/header/styled";
+
 
 
 
 export const LoginPage = ({ setIsLoggedIn }) => {
 
     const navigate = useNavigate();
+    const goToLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
+    const Back = () => {
+        navigate(-1)
+    }
 
     const [form, onChange, Clear] = useForm({
         email: '',
@@ -39,6 +52,8 @@ export const LoginPage = ({ setIsLoggedIn }) => {
         }
     }
     return (
+        <>
+        <Header/>
         <Stl.MainContainer>
             <form onSubmit={onSubmit}>
                 <img src={logoSmall} alt="Logo Rappi4" />
@@ -57,5 +72,6 @@ export const LoginPage = ({ setIsLoggedIn }) => {
                 <Stl.SignupBtn onClick={() => goToSignUpPage(navigate)} type="button">Não possui conta? Clique aqui</Stl.SignupBtn>
             </form>
         </Stl.MainContainer>
+    </>
     )
 }

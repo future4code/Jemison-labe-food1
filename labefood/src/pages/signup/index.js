@@ -6,10 +6,22 @@ import { useNavigate } from "react-router-dom";
 import {goToFeedPage } from "../../routes";
 import logoSmall from '../../assets/logo-small.png';
 import * as Stl from '../../components/'
+import Header from "../../components/header";
+import { Button } from "@chakra-ui/react";
+import back from '../../assets/back.png'
+import { Ghost, ImgBack } from "../../components/header/styled";
 
 export const SignUpPage = () => {
 
     const navigate = useNavigate();
+    const goToLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
+    const Back = () => {
+        navigate(-1)
+    }
 
     const [form, onChange, Clear] = useForm({
         name: '',
@@ -54,6 +66,19 @@ export const SignUpPage = () => {
     }
 
     return (
+        <>
+        <Header 
+                back={ <button onClick={Back}><ImgBack src={back}/></button>
+                }
+            
+                 name ={
+                    <h1>Cadastrar</h1>
+                }   
+                logout ={
+                    <Ghost></Ghost>
+                }
+
+               />
         <Stl.MainContainer>
             <form onSubmit={onSubmit}>
                 <img src={logoSmall} alt="logo rappi4" />
@@ -86,6 +111,6 @@ export const SignUpPage = () => {
                 <Stl.EnterBtn type="submit">Criar</Stl.EnterBtn>
             </form>
         </Stl.MainContainer>
-
+    </>
     )
 }

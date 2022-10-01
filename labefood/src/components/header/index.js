@@ -3,35 +3,26 @@ import { useNavigate } from 'react-router-dom';
 import * as Stl from './styled.js';
 import { Bar, Title, ImgBack } from "./styled.js";
 import { WrapItem, Button } from "@chakra-ui/react";
-import back from '../../assets/back.png'
-    
+
+  
 
 
 
-export const Header = (props) => {
+function  Header (props)  {
 
-    const navigate = useNavigate();
-
-    const goToLogout = () => {
-        localStorage.removeItem("token");
-        navigate("/login");
-    }
-
-    const Back = () => {
-        navigate(-1)
-    }
-
-    return (
+     return (
         <Bar>
-            <button onClick={Back}><ImgBack src={back} /></button>
+            <div>{props.back}</div>
 
             <Title>
                 {props.name}
             </Title>
             <WrapItem>
-                <Button colorScheme='red' onClick={goToLogout}>Logout</Button>
+                <div>{props.logout}</div>
             </WrapItem>
         </Bar>
     )
 
 }
+
+export default Header
