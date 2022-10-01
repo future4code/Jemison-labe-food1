@@ -1,7 +1,14 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import * as Stl from './styled.js';
-export const Header = () => {
+import { Bar, Title, ImgBack } from "./styled.js";
+import { WrapItem, Button } from "@chakra-ui/react";
+import back from '../../assets/back.png'
+    
+
+
+
+export const Header = (props) => {
 
     const navigate = useNavigate();
 
@@ -10,10 +17,21 @@ export const Header = () => {
         navigate("/login");
     }
 
+    const Back = () => {
+        navigate(-1)
+    }
+
     return (
-        <div>
-            <Stl.Logout onClick={() => goToLogout()}>Logout para testar o token que fica gravado</Stl.Logout>
-        </div>
+        <Bar>
+            <button onClick={Back}><ImgBack src={back} /></button>
+
+            <Title>
+                {props.name}
+            </Title>
+            <WrapItem>
+                <Button colorScheme='red' onClick={goToLogout}>Logout</Button>
+            </WrapItem>
+        </Bar>
     )
 
 }
