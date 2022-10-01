@@ -6,7 +6,7 @@ import {
     FormControl,
     FormErrorMessage,
 } from '@chakra-ui/react';
-import { validateStreet, validateNumber, validateNeighbourhood, validateCity, validateState } from "../../constants";
+import { validateAddressData} from "../../constants";
 import * as Stl from '../../components';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -33,11 +33,11 @@ export const AddAddressPage = () => {
     const onSubmit = (e) => {
 
         e.preventDefault();
-        setIsStreetValid(validateStreet(form.street));
-        setIsNumberValid(validateNumber(form.number));
-        setIsNeighbourhoodValid(validateNeighbourhood(form.neighbourhood));
-        setIsCityValid(validateCity(form.city));
-        setIsStateValid(validateState(form.state));
+        setIsStreetValid(validateAddressData(form.street));
+        setIsNumberValid(validateAddressData(form.number));
+        setIsNeighbourhoodValid(validateAddressData(form.neighbourhood));
+        setIsCityValid(validateAddressData(form.city));
+        setIsStateValid(validateAddressData(form.state));
         
         if (isStreetValid && isNumberValid && isNeighbourhoodValid && isCityValid && isStateValid == true) {
             axios.put(`${BASE_URL}/address`, {

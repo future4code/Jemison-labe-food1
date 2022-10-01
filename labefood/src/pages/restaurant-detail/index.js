@@ -1,8 +1,9 @@
-import { React, useState } from 'react';
+import { React, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetData } from '../../hooks';
 import { BASE_URL } from '../../constants';
 import * as Stl from './style.js';
+import GlobalStateContext from '../../context/global.context';
 import {
     useDisclosure,
     useNumberInput,
@@ -22,18 +23,23 @@ export const RestaurantDetailPage = () => {
     const navigate = useNavigate()
 
     const [id, setId] = useState(useParams())
-//componentes do Modal do Chackra UI
+    //componentes do Modal do Chackra UI
     const { isOpen, onOpen, onClose } = useDisclosure()
 
-
+    //tranformação do ID em uma string, pq o id.id não retorna no axios
     const idObject = JSON.stringify(id);
     const IdString = idObject.slice(7, -2);
 
-    const AddToCart = () => {
-        // quantidade é igual input.value
-        // criar um array com a quantidade e o id do produto
+    const { cartRestaurantInfo, setCartRestaurantInfo, cartProducts, setCartProducts } = useContext(GlobalStateContext)
 
-    }
+    const productsArray = [{
+        'id': '',
+        'image': '',
+        'name': '',
+        'descrtition': '',
+        'price': 0,
+        'quantity': 0
+    }]
 
     //componentes do contador da quantidade
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
@@ -53,9 +59,35 @@ export const RestaurantDetailPage = () => {
         }
     })
 
-    const list = data && data.restaurant.products.map((product) => {
-        if (data && data.restaurant.products) {
+    const AddToCart = (restaurantSelected, productSelected) => {
 
+        const obj = {
+            restaurantName: restaurantSelected.restaurant.name,
+            restaurantAddress: restaurantSelected.restaurant.address,
+            restaurantDeliveryTime: restaurantSelected.deliveryTime,
+            restaurantShipping: restaurantSelected.shipping
+        }
+
+        const prdct = [{
+            id: productSelected.id,
+            image: productSelected.photoUrl,
+            name: productSelected.name,
+            descrtition: productSelected.description,
+            price: productSelected.price,
+            quantity: input.value,
+        }]
+        cartProducts.push(prdct)
+        setCartRestaurantInfo(obj)
+        setCartProducts(cartProducts)
+        onClose()
+    }
+
+    console.log(cartRestaurantInfo)
+    console.log(cartProducts)
+
+    const list = data && data.restaurant.products.map((product) => {
+
+        if (data && data.restaurant.products) {
 
             const price = product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             return (
@@ -69,8 +101,7 @@ export const RestaurantDetailPage = () => {
 
                     <Stl.AddBtn onClick={onOpen}>adicionar</Stl.AddBtn>
                     <Modal onClose={onClose} isOpen={isOpen}>
-                        <ModalOverlay />
-                        <ModalContent>
+                                               <ModalContent>
                             <ModalHeader>Escolha a quantidade</ModalHeader>
                             <ModalCloseButton />
                             <ModalBody>
@@ -80,10 +111,10 @@ export const RestaurantDetailPage = () => {
                                     <Input   {...input} />
                                     <Button {...inc}>+</Button>
                                 </HStack>
-                                
+
                             </ModalBody>
                             <ModalFooter>
-                                <Button colorScheme='orange' mr={3} onClick={() => AddToCart()}>
+                                <Button colorScheme='orange' mr={3} onClick={() => AddToCart(data, product)}>
                                     Close
                                 </Button>
                             </ModalFooter>
@@ -96,7 +127,7 @@ export const RestaurantDetailPage = () => {
 
     if (data && data.restaurant) {
         return (
-            <Stl.Main>
+            <Stl.Main >
                 <Stl.Restaurant>
                     <img src={data.restaurant.logoUrl} />
 
@@ -116,10 +147,12 @@ export const RestaurantDetailPage = () => {
                     {list}
                 </div>
 
-            </Stl.Main>
+            </Stl.Main >
         )
     }
+
 }
+
 
 
 
