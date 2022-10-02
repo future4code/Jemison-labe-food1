@@ -7,7 +7,7 @@ export const Header = () => {
 
     const goToLogout = () => {
         localStorage.removeItem("token");
-        navigate("/login");
+        navigate("/");
     }
 
     return (

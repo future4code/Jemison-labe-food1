@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Main = styled.div`
-margin:16px;
+margin:14px;
 font-family: Roboto;
 letter-spacing: -0.39px;
 `;
@@ -69,7 +69,7 @@ position: absolute;
 
 h1{
     color:#E86E5A;
-    size:16px;
+    
 }
 h2{
     color:#B8B8B8;
@@ -91,4 +91,51 @@ export const AddBtn = styled.button`
     border-bottom-right-radius: 10px;
     `;
 
- 
+
+
+
+
+
+
+export const ModalMain = styled.div`
+width: 100%;
+height: 100vh;
+ position:fixed;
+top:0;
+left:0;
+z-index:10;
+background: rgba(0, 0, 0, 0.1);
+justify-content:center;
+align-items: center;
+
+`;
+
+export const ModalContainer = styled.div`
+background-color: white;
+width:90%;
+height: 25%;
+margin-left:5%;
+margin-top: 60%;
+padding-left:19%;
+padding-top:6%;
+font-family: Roboto;
+font-size: 16px;
+font-weight:bold;
+`;
+
+export const ModalTitle = styled.h1`
+margin-bottom:20px;
+margin-left:-15px;
+`;
+
+export const ModalBtn = styled.button`
+margin-top:20px;
+margin-left:20%;
+color: #4A90E2;
+`;
+
+export const RemoveDiv = styled.div`
+display:flex;
+flex-direction: column;
+align-items:right;
+`;
