@@ -29,3 +29,4 @@ export const goToAddAddressPage = (navigator) => {
 export const goToUpdatePerfil = (navigator) => {
     navigator('/update-perfil')
 }
+
