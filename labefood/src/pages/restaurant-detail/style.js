@@ -86,7 +86,8 @@ export const AddBtn = styled.button`
     justify-self:flex-end;
     width: 90px;
     height:31px;
-    margin-left:50vw;
+    margin-top: 33%;
+    margin-left:42vw;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
     `;
@@ -138,4 +139,29 @@ export const RemoveDiv = styled.div`
 display:flex;
 flex-direction: column;
 align-items:right;
+p{
+    margin-left:88%;
+    color:red;
+    border: 1px solid;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    width: 30px;
+    padding-left:8px;
+    margin-bottom:-27px;
+}
+`;
+
+export const RemoveButton = styled.button`
+color:red;
+border: 1px solid black;
+    font-size:12px;
+    align-self: flex-end;
+    justify-self:flex-end;
+    width: 90px;
+    height:31px;
+    margin-top: 33.5%;
+    margin-left:42vw;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+border-color: red;
 `;

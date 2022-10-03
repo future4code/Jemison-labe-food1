@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const TabBarContainer = styled.div`
 display: flex;
+background-color:white;
 `
 
 export const Item1 = styled.div`

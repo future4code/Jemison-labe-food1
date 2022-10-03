@@ -44,3 +44,7 @@ export const FiltersContainer = styled.div`
        
     }
     `
+    export const DivTab = styled.div`
+    position:fixed;
+    bottom: 0;
+    `;

@@ -7,7 +7,8 @@ import { BASE_URL } from '../../constants';
 import { useParams } from "react-router-dom";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import GlobalStateContext from "../../context/global.context";
-import { FiltersContainer } from "./styled";
+import { FiltersContainer, DivTab } from "./styled";
+import { StatLabel } from "@chakra-ui/react";
 
 export const FeedPage = () => {
 
@@ -47,7 +48,9 @@ return (
             </FiltersContainer>
             {/* <Filter/> */}
             <RestaurantCard />
+            <DivTab>
             <TabBar/>
+            </DivTab>
         </div>
     )
 }
