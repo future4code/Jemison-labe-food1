@@ -16,8 +16,8 @@ ugly-flag.surge.sh
 
 O que Funciona:
 - Login de usuárrios cadastrados
--Cadastro de novos usuários 
--Página dos restaurantes
+- Cadastro de novos usuários 
+- Página dos restaurantes
 - Detalhe das Páginas dos Restaurantes
 
 
