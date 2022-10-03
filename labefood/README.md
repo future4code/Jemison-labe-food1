@@ -30,8 +30,11 @@ O que não funciona:
 - O Cabeçalho não está aparecendo
 - Não foram adicionadas as telas de carregamento e erro
 
-<img src='../prints/print01.png'>
-<img src='../prints/print02.png'>
-<img src='../prints/print03.png'>
-<img src='../prints/print04.png'>
+<div align="center">
+<img src='https://user-images.githubusercontent.com/102265620/193486760-194f059a-9b3a-43db-9cd0-449d0687489e.png'>
+<img src='https://user-images.githubusercontent.com/102265620/193486814-04c973c0-a818-47c3-b403-d0f257df38a5.png'>
+<img src='https://user-images.githubusercontent.com/102265620/193486836-f84cd1b7-ef2a-46b8-93f1-0e1c0e616d2e.png'>
+<img src='https://user-images.githubusercontent.com/102265620/193486841-bdb838e6-75ae-4903-9bbc-616dbc1bf69e.png'>
+</div>
+
 
