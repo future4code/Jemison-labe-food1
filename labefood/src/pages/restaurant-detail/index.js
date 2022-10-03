@@ -76,9 +76,17 @@ export const RestaurantDetailPage = () => {
         setControleModal(controle.id)
         setIsModalVisible(true)
     }
+    
+    const RemoveItem = ((value)=> {
+       const lista = arrayIds.filter((prdct)=> { 
+            return prdct !== value.id });
+            setArrayIds(lista)
+            
+                  }
+       )
 
     const list = data && data.restaurant.products.map((product) => {
-
+     
         const price = product.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
         return (
 
@@ -94,11 +102,11 @@ export const RestaurantDetailPage = () => {
                 
                 <Stl.RemoveDiv>
                     <p>{quantityProductCart}</p>
-                    <Stl.AddBtn>remover</Stl.AddBtn>
+                    <Stl.RemoveButton onClick={()=>RemoveItem(product)}>remover</Stl.RemoveButton>
 
                     </Stl.RemoveDiv>
                    
-                 ) :(
+                 ) : (
                  <div>
                 <Stl.AddBtn onClick={() => OpenModal(product)}>adicionar</Stl.AddBtn>
                  

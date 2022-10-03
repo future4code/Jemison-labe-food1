@@ -1,7 +1,6 @@
 import { useGetData } from "../../hooks"
 import useProtectedPage from "../../hooks/useProtectedPage"
 import { useNavigate } from "react-router-dom";
-import { goToDetailsPage } from "../../routes"
 import { BASE_URL } from "../../constants"
 import { DeliveryTime, ImageCard, NameRestaurant, Rectangle, RestaurantCardContainer, Shipping, TimeShipping } from "./styled"
 
